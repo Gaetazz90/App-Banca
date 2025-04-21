@@ -31,6 +31,7 @@ public class UtenteMapper {
 
     public UtenteProfiloResponse fromUtenteToProfilo(Utente utente) {
         return UtenteProfiloResponse.builder()
+                .id(utente.getId())
                 .nome(utente.getNome())
                 .cognome(utente.getCognome())
                 .dataNascita(utente.getDataNascita())

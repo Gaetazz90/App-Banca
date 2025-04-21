@@ -1,19 +1,6 @@
 package com.example.Bank_App.domain.entities;
 
-
-
-import com.example.Bank_App.domain.enums.TipoOperazione;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Check;
 import org.springframework.data.annotation.CreatedBy;
@@ -28,9 +15,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "transazione")
+@Table(name = "transazione_schedulata")
 @EntityListeners(AuditingEntityListener.class)
-public class Transazione {
+public class TransazioneSchedulata {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,7 +27,7 @@ public class Transazione {
     @Column(nullable = false)
     private Double amount;
     @Column(nullable = false)
-    private LocalDateTime timestamp;
+    private LocalDateTime publishTime;
     @ManyToOne
     @JoinColumn(name = "conto_mittente")
     private Conto contoMittente;
@@ -50,9 +37,6 @@ public class Transazione {
     @ManyToOne(optional = false)
     @JoinColumn(name = "utente_id")
     private Utente utente;
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private TipoOperazione tipoOperazione;
     @CreatedDate
     @Column(name = "created_at")
     private LocalDateTime createdAt;

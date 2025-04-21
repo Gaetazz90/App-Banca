@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/app/v1/transaction")
+@RequestMapping("/app/v1/transazione")
 public class TransazioneController {
 
     @Autowired
     private TransazioneService transazioneService;
 
-    @GetMapping("/all")
+    @GetMapping("/get/all")
     public ResponseEntity<List<TransazioneResponse>> getAll() {
         return new ResponseEntity<>(transazioneService.getAll(), HttpStatus.OK);
     }

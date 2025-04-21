@@ -6,6 +6,7 @@ import java.time.LocalDate;
 
 @Builder
 public record UtenteProfiloResponse (
+        Long id,
         String nome,
         String cognome,
         LocalDate dataNascita,

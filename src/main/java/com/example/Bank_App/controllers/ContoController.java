@@ -36,7 +36,7 @@ public class ContoController {
         return new ResponseEntity<>(contoService.create(request), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/utente/{idUtente}/delete/{idConto}")
+    @DeleteMapping("/delete/{idConto}/utente/{idUtente}")
     public ResponseEntity<GenericResponse> deleteContoById(@PathVariable Long idUtente, @PathVariable Long idConto){
         contoService.deleteById(idUtente,idConto);
         return new ResponseEntity<>(new GenericResponse("Conto con id: " + idConto + " cancellato con successo"), HttpStatus.OK);
